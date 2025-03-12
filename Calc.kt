@@ -1,12 +1,12 @@
 fun main(args: Array) {
-    val (operation, num1, num2) = parseArguments(args)
-    val result = when (operation) {
-        "multiplica" -> multiplica(num1, num2)
-        "divide" -> divideE(num1, num2)
-        else -> throw IllegalArgumentException("Operación no soportada")
-    }
-    showResult(operation, result)
-}
+       val (operation, num1, num2) = parseArguments(args)
+       val result = when (operation) {
+           "multiplica" -> multiplica(num1, num2)
+           "divide" -> divide(num1, num2)
+           else -> throw IllegalArgumentException("Operación no soportada")
+       }
+       showResult(operation, result)
+   }
 
 fun parseArguments(args: Array): Triple {
     if (args.size != 3) {
@@ -26,6 +26,9 @@ fun showResult(operation: String, result: Int) {
     println("El resultado de la operación \"$operation\" es: $result")
 }
 
-fun divideE(num1: Int, num2: Int): Int {
+fun divide(num1: Int, num2: Int): Int {
+    if (num2 == 0) {
+        throw IllegalArgumentException("Error: No se puede dividir por cero")
+    }
     return num1 / num2
 }
